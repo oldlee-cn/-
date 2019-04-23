@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<form action="{% url 'go_from' %}" method="post" class="smart-green">
+    <h1>留言信息
+        <span>请留下你的信息.</span>
+    </h1>
+    <label>
+        <span>姓名 :</span>            表示：如果my_messages.username是bobby的话，就显示oldlee，注意if是成对出现的，不要忘记结尾endif,当然也有else语句
+        <input id="name" type="text" name="name" value="{% if not my_messages.username == 'bobby' %}oldlee{% else %}oldzhang{% endif %}" class="error" placeholder="请输入您的姓名"/>
+        <div class="error-msg"></div>
+    </label>
+
+    <label>
+        <span>邮箱 :</span>
+        <input id="email" type="email" value="" name="email" placeholder="请输入邮箱地址"/>
+        <div class="error-msg"></div>
+    </label>
+
+    <label>
+        <span>联系地址 :</span>
+        <input id="address" type="text" value="" name="address" placeholder="请输入联系地址"/>
+        <div class="error-msg"></div>
+    </label>
+
+    <label>
+        <span>留言 :</span>
+        <textarea id="message" name="message"  placeholder="请输入你的建议"></textarea>
+        <div class="error-msg"></div>
+    </label>
+    <div class="success-msg"></div>
+    <label>
+        <span>&nbsp;</span>
+        <input type="submit" class="button" value="提交"/>
+    </label>
+    {% csrf_token %}
+</form>
+
+</body>
+</html>
